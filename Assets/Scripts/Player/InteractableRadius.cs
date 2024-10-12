@@ -43,22 +43,32 @@ public class InteractableRadius : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && _interactables.Contains(component) && component.IsInteractable)
             {
-                _uiManager.ViewTextInteractable();
-
-                if (Input.GetKey(KeyCode.E))
+                if (PlayerContoller.Instance.hand == 1)
                 {
-                    component.Action();
-                    component.ActivateView();
+                    _uiManager.AtenntionPayalnikClose();
+                    _uiManager.ViewTextInteractable();
+
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        component.Action();
+                        component.ActivateView();
+                    }
+                }else
+                {
+                    _uiManager.AtenntionPayalnik();
+                    _uiManager.CloseTextInteractable();
                 }
-            }
-            else
+                }
+                else
             {
                 _uiManager.CloseTextInteractable();
+                _uiManager.AtenntionPayalnikClose();
             }
         }
         else
         {
             _uiManager.CloseTextInteractable();
+            _uiManager.AtenntionPayalnikClose();
         }
 
         Debug.DrawRay(transform.position, transform.forward, Color.red);
