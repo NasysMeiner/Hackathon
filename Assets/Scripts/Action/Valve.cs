@@ -70,6 +70,10 @@ public class Valve : MonoBehaviour, IInteractable
             _propts.material.color = _correctColor;
             _isInteractable = false;
         }
+        else
+        {
+            _propts.material.color = _inCorrectColor;
+        }
     }
 
     private void MoveValve(int direction)
