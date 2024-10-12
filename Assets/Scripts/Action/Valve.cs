@@ -33,6 +33,8 @@ public class Valve : MonoBehaviour, IInteractable
 
     public void Action()
     {
+        _manager.ViewTextValve();
+
         if (Input.GetKey(KeyCode.E))
         {
             _currentValue += _addValue * Time.deltaTime;
@@ -68,7 +70,6 @@ public class Valve : MonoBehaviour, IInteractable
         if ((int)_currentValue > _correctValue - _errorValue && (int)_currentValue < _correctValue + _errorValue)
         {
             _propts.material.color = _correctColor;
-            _isInteractable = false;
         }
         else
         {
