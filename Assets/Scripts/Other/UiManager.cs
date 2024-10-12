@@ -1,5 +1,8 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
@@ -38,5 +41,23 @@ public class UiManager : MonoBehaviour
 
         if (_sliderProgress.gameObject.activeSelf == false)
             _sliderProgress.gameObject.SetActive(true);
+    }
+
+    
+    public GameObject textPanel;
+    public Text mainText;
+    public void Speak(string name, string text/*, Sprite speaker*/)
+    {
+        textPanel.SetActive(true);
+        textPanel.GetComponentInChildren<Text>().text = name;
+        mainText.text = text;
+        //textPanel.GetComponentInChildren<Image>().sprite = speaker;
+        StartCoroutine(TextOut());
+    }
+
+    IEnumerator TextOut()
+    {
+        yield return new WaitForSeconds(10);
+        textPanel.SetActive(false);
     }
 }
