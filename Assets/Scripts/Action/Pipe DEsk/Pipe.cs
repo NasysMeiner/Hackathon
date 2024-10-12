@@ -6,9 +6,6 @@ using UnityEngine;
 public class Pipe : MonoBehaviour, IInteractable
 {
     [SerializeField] private MeshRenderer _propts;
-    [SerializeField] private float _addValue = 1;
-    [SerializeField] private int _maxValue = 100;
-    [SerializeField] private int _errorValue = 10;
     [SerializeField] private bool _isInteractable = true;
 
     [SerializeField]  private UiManager _manager;

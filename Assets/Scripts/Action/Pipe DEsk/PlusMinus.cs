@@ -17,6 +17,16 @@ public class PlusMinus : MonoBehaviour
     public void isWin(GameObject zxc)
     {
         int a = 0;
+        bool isMach = false;
+        foreach(GameObject pivo in pipes)
+        {
+            if(pivo == zxc) 
+            {
+                isMach = true;
+                break;
+            }
+        }
+        if(!isMach)
         pipes.Add(zxc);
         
         foreach(GameObject go in pipes)
@@ -24,7 +34,7 @@ public class PlusMinus : MonoBehaviour
             if (go.GetComponent<Pipe>().isWin == true)
                 a++;
         }
-        if (a >= 9)
+        if (a >= 7)
             Debug.Log("zxc");
     }
 }
