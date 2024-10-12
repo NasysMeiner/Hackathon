@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private SliderProgress _sliderProgress;
     [SerializeField] private TMP_Text _textInteractable;
     [SerializeField] private TMP_Text _textValveInteractable;
+    [SerializeField] private TMP_Text _textAttention;
 
     private bool _isActiveText = false;
 
@@ -56,6 +57,15 @@ public class UiManager : MonoBehaviour
             _sliderProgress.gameObject.SetActive(true);
     }
 
+    public void AtenntionPayalnik()
+    {
+        _textAttention.gameObject.SetActive(true);
+    }
+
+    public void AtenntionPayalnikClose()
+    {
+        _textAttention.gameObject.SetActive(false);
+    }
 
     public GameObject textPanel;
     public Text mainText;
