@@ -22,24 +22,35 @@ public class Hole : MonoBehaviour, IInteractable
     {
         if(_isInteractable)
             _uiManager.ViewProgressBar(_currentStrength, _maxStrength);
+
+        if (!_uiManager.IsActiveText)
+            _uiManager.ViewTextInteractable();
     }
 
     public void DeActivateView()
     {
         _uiManager.ResetProgressBar();
+
+        if (_uiManager.IsActiveText)
+            _uiManager.CloseTextInteractable();
     }
 
     public void Action()
     {
-        if(_currentStrength < _maxStrength)
+        ActivateView();
+
+        if (Input.GetKey(KeyCode.E))
         {
-            _currentStrength += _speedRepair * Time.deltaTime;
-            ActivateView();
-        }
-        else
-        {
-            _isInteractable = false;
-            DeActivateView();
+            if (_currentStrength < _maxStrength)
+            {
+                _currentStrength += _speedRepair * Time.deltaTime;
+                ActivateView();
+            }
+            else
+            {
+                _isInteractable = false;
+                DeActivateView();
+            }
         }
     }
 

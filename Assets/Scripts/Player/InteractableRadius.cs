@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -21,7 +18,6 @@ public class InteractableRadius : MonoBehaviour
         if (other.TryGetComponent(out IInteractable interactable))
         {
             _interactables.Add(interactable);
-            Debug.Log(other.name);
         }
     }
 
@@ -37,32 +33,29 @@ public class InteractableRadius : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        RaycastHit hit;
-
-        if(_interactables.Count > 0 && Physics.Raycast(transform.position, transform.forward, out hit))
+        Debug.Log(_interactables.Count);
+        if (_interactables.Count > 0 && Physics.Raycast(transform.position, transform.forward * 10, out RaycastHit hit))
         {
-            if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && _interactables.Contains(component) && component.IsInteractable)
-            {
-                _uiManager.ViewTextInteractable();
+            Debug.Log("No222");
 
-                if (Input.GetKey(KeyCode.E))
-                {
-                    component.Action();
-                    component.ActivateView();
-                }
-            }
-            else
+            if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && component.IsInteractable)
             {
-                _uiManager.CloseTextInteractable();
+                Debug.Log("No");
+                component.Action();
+                component.ActivateView();
             }
         }
         else
         {
-            _uiManager.CloseTextInteractable();
+            if (_uiManager.IsActiveText)
+            {
+                _uiManager.CloseTextInteractable();
+                _uiManager.ResetProgressBar();
+            }
         }
 
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * 10, Color.red);
     }
 }

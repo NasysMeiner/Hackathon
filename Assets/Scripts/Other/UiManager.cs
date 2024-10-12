@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,14 +9,28 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TMP_Text _textInteractable;
     [SerializeField] private TMP_Text _textValveInteractable;
 
+    private bool _isActiveText = false;
+
+    public bool IsActiveText => _isActiveText;
+
+    private void Start()
+    {
+        _sliderProgress.gameObject.SetActive(false);
+        _textInteractable.gameObject.SetActive(false);
+        _textInteractable.text = "Press E";
+        _textValveInteractable.gameObject.SetActive(false);
+    }
+
     public void ViewTextInteractable()
     {
         _textInteractable.gameObject.SetActive(true);
+        _isActiveText = true;
     }
 
     public void CloseTextInteractable()
     {
         _textInteractable.gameObject.SetActive(false);
+        _isActiveText = false;
     }
 
     public void ViewTextValve()
@@ -43,7 +56,7 @@ public class UiManager : MonoBehaviour
             _sliderProgress.gameObject.SetActive(true);
     }
 
-    
+
     public GameObject textPanel;
     public Text mainText;
     public void Speak(string name, string text/*, Sprite speaker*/)
