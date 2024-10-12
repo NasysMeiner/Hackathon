@@ -18,9 +18,11 @@ public class InteractableRadius : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.TryGetComponent(out  IInteractable interactable))
+        if (other.TryGetComponent(out IInteractable interactable))
+        {
             _interactables.Add(interactable);
+            Debug.Log(other.name);
+        }
     }
 
     private void OnTriggerExit(Collider other)
