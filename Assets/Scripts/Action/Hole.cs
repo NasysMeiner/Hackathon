@@ -10,6 +10,7 @@ public class Hole : MonoBehaviour, IInteractable
 
     [SerializeField] private UiManager _uiManager;
 
+    bool IInteractable.IsInteractable { get { return _isInteractable; } set { } }
 
     public void Init(float maxStrength, float speedRepair)
     {
@@ -17,17 +18,28 @@ public class Hole : MonoBehaviour, IInteractable
         _speedRepair = speedRepair;
     }
 
+    public void ActivateView()
+    {
+        if(_isInteractable)
+            _uiManager.ViewProgressBar(_currentStrength, _maxStrength);
+    }
+
+    public void DeActivateView()
+    {
+        _uiManager.ResetProgressBar();
+    }
+
     public void Action()
     {
         if(_currentStrength < _maxStrength)
         {
             _currentStrength += _speedRepair * Time.deltaTime;
-            _uiManager.ViewProgressBar(_currentStrength, _maxStrength);
+            ActivateView();
         }
         else
         {
             _isInteractable = false;
-            _uiManager.ResetProgressBar();
+            DeActivateView();
         }
     }
 
@@ -35,7 +47,7 @@ public class Hole : MonoBehaviour, IInteractable
     {
         _currentStrength = 0;
         _isInteractable = true;
-        _uiManager.ResetProgressBar();
+        DeActivateView();
         //Update model
     }
 }
