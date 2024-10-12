@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,15 +8,30 @@ public class UiManager : MonoBehaviour
     [SerializeField] private SliderProgress _sliderProgress;
     [SerializeField] private TMP_Text _textInteractable;
     [SerializeField] private TMP_Text _textValveInteractable;
+    [SerializeField] private TMP_Text _textAttention;
+
+    private bool _isActiveText = false;
+
+    public bool IsActiveText => _isActiveText;
+
+    private void Start()
+    {
+        _sliderProgress.gameObject.SetActive(false);
+        _textInteractable.gameObject.SetActive(false);
+        _textInteractable.text = "Press E";
+        _textValveInteractable.gameObject.SetActive(false);
+    }
 
     public void ViewTextInteractable()
     {
         _textInteractable.gameObject.SetActive(true);
+        _isActiveText = true;
     }
 
     public void CloseTextInteractable()
     {
         _textInteractable.gameObject.SetActive(false);
+        _isActiveText = false;
     }
 
     public void ViewTextValve()
@@ -41,6 +55,16 @@ public class UiManager : MonoBehaviour
 
         if (_sliderProgress.gameObject.activeSelf == false)
             _sliderProgress.gameObject.SetActive(true);
+    }
+
+    public void AtenntionPayalnik()
+    {
+        _textAttention.gameObject.SetActive(true);
+    }
+
+    public void AtenntionPayalnikClose()
+    {
+        _textAttention.gameObject.SetActive(false);
     }
 
     public GameObject textPanel;

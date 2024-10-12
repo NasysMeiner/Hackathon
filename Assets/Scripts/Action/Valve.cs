@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Valve : MonoBehaviour, IInteractable
@@ -39,7 +37,7 @@ public class Valve : MonoBehaviour, IInteractable
             _currentValue += _addValue * Time.deltaTime;
             MoveValve((int)_addValue);
         }
-        else if(Input.GetKey(KeyCode.Q))
+        else if (Input.GetKey(KeyCode.Q))
         {
             MoveValve((int)-_addValue);
             _currentValue -= _addValue * Time.deltaTime;

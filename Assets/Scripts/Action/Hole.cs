@@ -22,15 +22,23 @@ public class Hole : MonoBehaviour, IInteractable
     {
         if(_isInteractable)
             _uiManager.ViewProgressBar(_currentStrength, _maxStrength);
+
+        if (!_uiManager.IsActiveText)
+            _uiManager.ViewTextInteractable();
     }
 
     public void DeActivateView()
     {
         _uiManager.ResetProgressBar();
+
+        if (_uiManager.IsActiveText)
+            _uiManager.CloseTextInteractable();
     }
 
     public void Action()
     {
+        ActivateView();
+
         if (Input.GetKey(KeyCode.E))
         {
             if (_currentStrength < _maxStrength)

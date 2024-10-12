@@ -1,27 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent (typeof(BoxCollider))]
 public class InteractableRadius : MonoBehaviour
 {
+    [SerializeField] private float _radius;
     [SerializeField] private UiManager _uiManager;
 
-    private List<IInteractable> _interactables = new();
+    private bool _isActive = false;
+    private BoxCollider _collider;
+    private IInteractable _interactable;
 
-    private void OnEnable()
+    private void Start()
     {
-
+        _collider = GetComponent<BoxCollider> ();
+        _collider.size = new Vector3(0.1f, 0.1f, 1 * _radius);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
-            _interactables.Add(interactable);
-            Debug.Log(other.name);
+            if (interactable.IsInteractable && !_isActive)
+            {
+                _isActive = true;
+                _interactable = interactable;
+                interactable.Action();
+                interactable.ActivateView();
+            }
         }
     }
 
@@ -29,41 +34,21 @@ public class InteractableRadius : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
-            if (_interactables.Contains(interactable))
+            if (_isActive)
             {
-                _interactables.Remove(interactable);
-                interactable.DeActivateView();
+                _interactable = null;
+                _isActive = false;
+                _uiManager.CloseTextInteractable();
+                _uiManager.ResetProgressBar();
             }
         }
     }
 
-    void Update()
+    private void Update()
     {
-        RaycastHit hit;
-
-        if(_interactables.Count > 0 && Physics.Raycast(transform.position, transform.forward, out hit))
+        if(_interactable != null)
         {
-            Debug.Log(hit.collider.gameObject.TryGetComponent(out IInteractable component2));
-            if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && _interactables.Contains(component) && component.IsInteractable)
-            {
-                _uiManager.ViewTextInteractable();
-
-                if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Q))
-                {
-                    component.Action();
-                    Debug.Log("Press");
-                }
-            }
-            else
-            {
-                _uiManager.CloseTextInteractable();
-            }
+            _interactable.Action();
         }
-        else
-        {
-            _uiManager.CloseTextInteractable();
-        }
-
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
     }
 }
