@@ -6,6 +6,7 @@ public class Valve : MonoBehaviour, IInteractable
     [SerializeField] private Color _inCorrectColor;
     [SerializeField] private MeshRenderer _propts;
 
+    [SerializeField] private float _speed;
     [SerializeField] private int _correctValue = 50;
     [SerializeField] private float _currentValue = 0;
     [SerializeField] private float _addValue = 1;
@@ -47,6 +48,8 @@ public class Valve : MonoBehaviour, IInteractable
 
         if (_currentValue > _maxValue)
             _currentValue = 0;
+        else if (_currentValue < 0)
+            _currentValue = _maxValue;
     }
 
     public void ActivateView()
@@ -71,6 +74,6 @@ public class Valve : MonoBehaviour, IInteractable
 
     private void MoveValve(int direction)
     {
-        transform.Rotate(new Vector3(0, direction * 10, 0));
+        transform.Rotate(new Vector3(0, direction * _speed, 0));
     }
 }

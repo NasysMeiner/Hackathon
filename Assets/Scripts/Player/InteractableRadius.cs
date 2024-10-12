@@ -50,5 +50,8 @@ public class InteractableRadius : MonoBehaviour
         {
             _interactable.Action();
         }
+
+        if (_interactable != null &&!_interactable.IsInteractable)
+            _interactable = null;
     }
 }
