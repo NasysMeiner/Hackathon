@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
+    public static PlayerContoller Instance;
+    public int hand;
     public float speed; //скорость перса настраивай в инспекторе
     float vertical, horizontal, jump;
     bool isGrounded;
@@ -12,6 +14,11 @@ public class PlayerContoller : MonoBehaviour
     GameObject currentItem;
     public GameObject kanistra, payalnik;
     public Transform itemSpawner;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -28,6 +35,8 @@ public class PlayerContoller : MonoBehaviour
     {
         if (currentItem != null)
             Destroy(currentItem);
+
+        hand = num;
 
         switch (num)
         {
