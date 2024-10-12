@@ -1,23 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent (typeof(BoxCollider))]
 public class InteractableRadius : MonoBehaviour
 {
+    [SerializeField] private float _radius;
     [SerializeField] private UiManager _uiManager;
 
-    private List<IInteractable> _interactables = new();
+    private bool _isActive = false;
+    private BoxCollider _collider;
+    private IInteractable _interactable;
 
-    private void OnEnable()
+    private void Start()
     {
-
+        _collider = GetComponent<BoxCollider> ();
+        _collider.size = new Vector3(0.1f, 0.1f, 1 * _radius);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
-            _interactables.Add(interactable);
+            if (interactable.IsInteractable && !_isActive)
+            {
+                _isActive = true;
+                _interactable = interactable;
+                interactable.Action();
+                interactable.ActivateView();
+            }
         }
     }
 
@@ -25,37 +34,21 @@ public class InteractableRadius : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
-            if (_interactables.Contains(interactable))
+            if (_isActive)
             {
-                _interactables.Remove(interactable);
-                interactable.DeActivateView();
-            }
-        }
-    }
-
-    void FixedUpdate()
-    {
-        Debug.Log(_interactables.Count);
-        if (_interactables.Count > 0 && Physics.Raycast(transform.position, transform.forward * 10, out RaycastHit hit))
-        {
-            Debug.Log("No222");
-
-            if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && component.IsInteractable)
-            {
-                Debug.Log("No");
-                component.Action();
-                component.ActivateView();
-            }
-        }
-        else
-        {
-            if (_uiManager.IsActiveText)
-            {
+                _interactable = null;
+                _isActive = false;
                 _uiManager.CloseTextInteractable();
                 _uiManager.ResetProgressBar();
             }
         }
+    }
 
-        Debug.DrawRay(transform.position, transform.forward * 10, Color.red);
+    private void Update()
+    {
+        if(_interactable != null)
+        {
+            _interactable.Action();
+        }
     }
 }
