@@ -12,7 +12,7 @@ public class LightMainControl : MonoBehaviour
 
     private void Start()
     {
-        ChangeState("Emergency");
+        ChangeState("Standard");
     }
 
     //Сменить состояние всего света, ключить или выключить

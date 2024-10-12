@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166757452142922387, guid: e13780aade42e22429012c784e992d7d, type: 3}
       propertyPath: m_Intensity
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9166757452142922387, guid: e13780aade42e22429012c784e992d7d, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166757452142922387, guid: e13780aade42e22429012c784e992d7d, type: 3}
       propertyPath: m_Intensity
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9166757452142922387, guid: e13780aade42e22429012c784e992d7d, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166757452142922387, guid: e13780aade42e22429012c784e992d7d, type: 3}
       propertyPath: m_Intensity
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9166757452142922387, guid: e13780aade42e22429012c784e992d7d, type: 3}
       propertyPath: m_Shadows.m_Type
