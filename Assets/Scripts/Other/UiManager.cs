@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
@@ -6,10 +7,17 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    public static UiManager instance;
     [SerializeField] private SliderProgress _sliderProgress;
     [SerializeField] private TMP_Text _textInteractable;
     [SerializeField] private TMP_Text _textValveInteractable;
     [SerializeField] private TMP_Text _textAttention;
+    [SerializeField] private TMP_Text _textFuel;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void ViewTextInteractable()
     {
@@ -52,6 +60,11 @@ public class UiManager : MonoBehaviour
     public void AtenntionPayalnikClose()
     {
         _textAttention.gameObject.SetActive(false);
+    }
+
+    public void Fuel(float fuel)
+    {
+        _textFuel.text = "Топливо в канистре: " + Convert.ToInt32(fuel) + "/100";
     }
 
     public GameObject textPanel;

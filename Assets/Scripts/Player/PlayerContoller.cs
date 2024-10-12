@@ -8,8 +8,7 @@ public class PlayerContoller : MonoBehaviour
     public static PlayerContoller Instance;
     public int hand;
     public float speed; //скорость перса настраивай в инспекторе
-    float vertical, horizontal, jump;
-    bool isGrounded;
+    float vertical, horizontal;
 
     GameObject currentItem;
     public GameObject kanistra, payalnik;
