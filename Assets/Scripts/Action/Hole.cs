@@ -38,25 +38,27 @@ public class Hole : MonoBehaviour, IInteractable
 
     public void Action()
     {
-        if(PlayerContoller.Instance.hand == 1)
+        if (PlayerContoller.Instance.hand == 1)
         {
-        ActivateView();
+            ActivateView();
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (_currentStrength < _maxStrength)
+            if (Input.GetKey(KeyCode.E))
             {
-                _currentStrength += _speedRepair * Time.deltaTime;
-                ActivateView();
-            }
-            else
-            {
-                _isInteractable = false;
-                DeActivateView();
+                if (_currentStrength < _maxStrength)
+                {
+                    _currentStrength += _speedRepair * Time.deltaTime;
+                    ActivateView();
+                }
+                else
+                {
+                    _isInteractable = false;
+                    DeActivateView();
+                }
             }
         }
-        }else
+        else
         {
+            DeActivateView();
             _uiManager.AtenntionPayalnik();
         }
     }
@@ -66,7 +68,7 @@ public class Hole : MonoBehaviour, IInteractable
         _currentStrength = 0;
         _isInteractable = true;
         DeActivateView();
-        
+
         //Update model
     }
 }
