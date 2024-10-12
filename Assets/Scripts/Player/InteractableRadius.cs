@@ -24,8 +24,6 @@ public class InteractableRadius : MonoBehaviour
             {
                 _isActive = true;
                 _interactable = interactable;
-                interactable.Action();
-                interactable.ActivateView();
             }
         }
     }
@@ -38,6 +36,7 @@ public class InteractableRadius : MonoBehaviour
             {
                 _interactable = null;
                 _isActive = false;
+                _uiManager.AtenntionPayalnikClose();
                 _uiManager.CloseTextInteractable();
                 _uiManager.CloseViewTextValve();
                 _uiManager.ResetProgressBar();

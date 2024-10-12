@@ -20,7 +20,8 @@ public class Hole : MonoBehaviour, IInteractable
 
     public void ActivateView()
     {
-        if(_isInteractable)
+        _uiManager.AtenntionPayalnikClose();
+        if (_isInteractable)
             _uiManager.ViewProgressBar(_currentStrength, _maxStrength);
 
         if (!_uiManager.IsActiveText)
@@ -37,20 +38,28 @@ public class Hole : MonoBehaviour, IInteractable
 
     public void Action()
     {
-        ActivateView();
-
-        if (Input.GetKey(KeyCode.E))
+        if (PlayerContoller.Instance.hand == 1)
         {
-            if (_currentStrength < _maxStrength)
+            ActivateView();
+
+            if (Input.GetKey(KeyCode.E))
             {
-                _currentStrength += _speedRepair * Time.deltaTime;
-                ActivateView();
+                if (_currentStrength < _maxStrength)
+                {
+                    _currentStrength += _speedRepair * Time.deltaTime;
+                    ActivateView();
+                }
+                else
+                {
+                    _isInteractable = false;
+                    DeActivateView();
+                }
             }
-            else
-            {
-                _isInteractable = false;
-                DeActivateView();
-            }
+        }
+        else
+        {
+            DeActivateView();
+            _uiManager.AtenntionPayalnik();
         }
     }
 
@@ -59,6 +68,7 @@ public class Hole : MonoBehaviour, IInteractable
         _currentStrength = 0;
         _isInteractable = true;
         DeActivateView();
+
         //Update model
     }
 }
