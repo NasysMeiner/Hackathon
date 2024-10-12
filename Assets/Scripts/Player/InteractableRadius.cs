@@ -18,7 +18,6 @@ public class InteractableRadius : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
 
         if (other.TryGetComponent(out  IInteractable interactable))
             _interactables.Add(interactable);
@@ -42,7 +41,6 @@ public class InteractableRadius : MonoBehaviour
 
         if(_interactables.Count > 0 && Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            Debug.Log(hit.transform.name);
             if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && _interactables.Contains(component) && component.IsInteractable)
             {
                 _uiManager.ViewTextInteractable();
