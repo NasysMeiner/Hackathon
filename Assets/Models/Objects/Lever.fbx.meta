@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07c82f3389818274e8f460a5cbf7df01
+guid: 1d042ad794eb3b34bb4d690089b1d6f4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,53 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BLACK
+      name: Plastic
     second: {fileID: 2100000, guid: 15324bcea01a0474a9033520a99e0dd9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: black.001
-    second: {fileID: 2100000, guid: 15324bcea01a0474a9033520a99e0dd9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: black.002
-    second: {fileID: 2100000, guid: 15324bcea01a0474a9033520a99e0dd9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blue
-    second: {fileID: 2100000, guid: 9877f3411154a544488ba8c900bb3471, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: gray.002
+      name: PlasticLight
     second: {fileID: 2100000, guid: a899c340648dfb94ba03f600c522afb6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: green
-    second: {fileID: 2100000, guid: 970b5cd8962723c44baaf303ac226a8b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: red.001
-    second: {fileID: 2100000, guid: fac71c54c2d324b46bd9a976a48cf52e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: red.004
-    second: {fileID: 2100000, guid: fac71c54c2d324b46bd9a976a48cf52e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u041C\u0430\u0442\u0435\u0440\u0438\u0430\u043B"
-    second: {fileID: 2100000, guid: 91a44b2e4cd45304a86beae364a296d2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "\u041C\u0430\u0442\u0435\u0440\u0438\u0430\u043B.001"
-    second: {fileID: 2100000, guid: 15324bcea01a0474a9033520a99e0dd9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
