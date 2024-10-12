@@ -79,6 +79,6 @@ public class Valve : MonoBehaviour, IInteractable
 
     private void MoveValve(int direction)
     {
-        transform.Rotate(new Vector3(0, direction * _speed, 0));
+        transform.Rotate(new Vector3(0, 0, direction * _speed));
     }
 }

@@ -13,7 +13,7 @@ public class InteractableRadius : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<BoxCollider> ();
-        _collider.size = new Vector3(0.1f, 0.1f, 1 * _radius);
+        _collider.size = new Vector3(0.01f, 0.01f, 1 * _radius);
     }
 
     private void OnTriggerEnter(Collider other)
