@@ -31,15 +31,18 @@ public class Hole : MonoBehaviour, IInteractable
 
     public void Action()
     {
-        if(_currentStrength < _maxStrength)
+        if (Input.GetKey(KeyCode.E))
         {
-            _currentStrength += _speedRepair * Time.deltaTime;
-            ActivateView();
-        }
-        else
-        {
-            _isInteractable = false;
-            DeActivateView();
+            if (_currentStrength < _maxStrength)
+            {
+                _currentStrength += _speedRepair * Time.deltaTime;
+                ActivateView();
+            }
+            else
+            {
+                _isInteractable = false;
+                DeActivateView();
+            }
         }
     }
 

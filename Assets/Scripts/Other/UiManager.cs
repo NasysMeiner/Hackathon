@@ -43,7 +43,6 @@ public class UiManager : MonoBehaviour
             _sliderProgress.gameObject.SetActive(true);
     }
 
-    
     public GameObject textPanel;
     public Text mainText;
     public void Speak(string name, string text/*, Sprite speaker*/)

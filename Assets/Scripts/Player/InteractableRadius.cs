@@ -43,14 +43,15 @@ public class InteractableRadius : MonoBehaviour
 
         if(_interactables.Count > 0 && Physics.Raycast(transform.position, transform.forward, out hit))
         {
+            Debug.Log(hit.collider.gameObject.TryGetComponent(out IInteractable component2));
             if (hit.collider.gameObject.TryGetComponent(out IInteractable component) && _interactables.Contains(component) && component.IsInteractable)
             {
                 _uiManager.ViewTextInteractable();
 
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Q))
                 {
                     component.Action();
-                    component.ActivateView();
+                    Debug.Log("Press");
                 }
             }
             else

@@ -37,9 +37,11 @@ public class Valve : MonoBehaviour, IInteractable
         if (Input.GetKey(KeyCode.E))
         {
             _currentValue += _addValue * Time.deltaTime;
+            MoveValve((int)_addValue);
         }
         else if(Input.GetKey(KeyCode.Q))
         {
+            MoveValve((int)-_addValue);
             _currentValue -= _addValue * Time.deltaTime;
         }
 
@@ -67,5 +69,10 @@ public class Valve : MonoBehaviour, IInteractable
             _propts.material.color = _correctColor;
             _isInteractable = false;
         }
+    }
+
+    private void MoveValve(int direction)
+    {
+        transform.Rotate(new Vector3(0, direction * 10, 0));
     }
 }
