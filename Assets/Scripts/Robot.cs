@@ -39,11 +39,9 @@ public class Robot : MonoBehaviour, IInteractable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Close");
                 _uiManager.CloseDialog();
                 _isInteractable = false;
                 _uiManager.CloseText();
-                NextDialog();
             }
         }
         else
