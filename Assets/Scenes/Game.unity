@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44954622, g: 0.4996181, b: 0.5756719, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2627,6 +2627,7 @@ MonoBehaviour:
   kanistra: {fileID: 946734181340974603, guid: dab89f07ed7c9bb4faf7902fc64834fe, type: 3}
   payalnik: {fileID: 7113727010767105345, guid: faeb8269ba6613c4faa9da21df8bc763, type: 3}
   itemSpawner: {fileID: 1815717415}
+  rb: {fileID: 0}
 --- !u!114 &1131659908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,6 +2679,7 @@ MonoBehaviour:
   _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
+  _gameObject: {fileID: 0}
   _uiManager: {fileID: 1490076169}
 --- !u!65 &1151968158
 BoxCollider:
@@ -3428,6 +3430,13 @@ MonoBehaviour:
   _styles: 01000000030000000200000000000000000000000000000000000000000000000000000000000000
   _engine: {fileID: 692239669}
   _car: {fileID: 753229947}
+  _triggerControl: {fileID: 0}
+  _lctrl: {fileID: 0}
+  tmp_task: {fileID: 0}
+  tasks: []
+  Mars: {fileID: 0}
+  endPosition: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!4 &1407003620
 Transform:
   m_ObjectHideFlags: 0
@@ -3483,6 +3492,9 @@ MonoBehaviour:
   _textPanel: {fileID: 1843215730}
   _textName: {fileID: 252919466}
   _timeDialog: 10
+  _image: {fileID: 0}
+  astro_spr: {fileID: 0}
+  robo_spr: {fileID: 0}
 --- !u!4 &1490076170
 Transform:
   m_ObjectHideFlags: 0
@@ -3639,6 +3651,7 @@ MonoBehaviour:
   _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
+  _gameObject: {fileID: 0}
   _uiManager: {fileID: 1490076169}
 --- !u!65 &1545010383
 BoxCollider:
@@ -4079,6 +4092,7 @@ MonoBehaviour:
   _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
+  _gameObject: {fileID: 0}
   _uiManager: {fileID: 1490076169}
 --- !u!65 &1694563838
 BoxCollider:
@@ -4829,6 +4843,7 @@ MonoBehaviour:
   _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
+  _gameObject: {fileID: 0}
   _uiManager: {fileID: 1490076169}
 --- !u!65 &1993455772
 BoxCollider:

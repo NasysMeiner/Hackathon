@@ -22,16 +22,23 @@ public class EventManager : MonoBehaviour
     [SerializeField] GameObject Mars;
     [SerializeField] GameObject endPosition;
 
+    [SerializeField] SoundManager soundManager;
+
     private bool _isDialog = false;
     private bool _isEvent = false;
     private bool _isEnd = false;
     private Hole _currentHole = null;
     private int _currentStyle = 0;
 
+    private Style lastStyle;
+
     private void Start()
     {
         current_task = 0;
         tmp_task.text = "Задача: \n" + tasks[current_task];
+
+        soundManager.Play("Music");
+        soundManager.Play("Ambient");
 
         Instance = this;
         _robot.NextDialog();
@@ -58,8 +65,14 @@ public class EventManager : MonoBehaviour
 
     public void EndEvent()
     {
+       
+
         current_task++;
         tmp_task.text = "Задача: \n" + tasks[current_task];
+
+        soundManager.PlayFromStart("Music");
+        soundManager.Pause("MusicIntence");
+        soundManager.PlayFromStart("Ambient");
 
         _lctrl.ChangeState("Standard");
         Debug.Log("End!!!");
@@ -95,10 +108,18 @@ public class EventManager : MonoBehaviour
         current_task++;
         tmp_task.text = tasks[current_task];
 
+        lastStyle = styl;
+
         switch (styl)
         {
 
             case Style.BlackHole:
+
+
+                soundManager.Pause("Music");
+                soundManager.PlayFromStart("MusicIntence");
+                soundManager.Pause("Ambient");
+
                 _currentHole = _holes[Random.Range(0, _holes.Count)];
                 _currentHole.Breake();
                 _lctrl.ChangeState("Emergency");
@@ -110,6 +131,9 @@ public class EventManager : MonoBehaviour
                 break;
 
             case Style.Ventil:
+                soundManager.Pause("Music");
+                soundManager.PlayFromStart("MusicIntence");
+                soundManager.Pause("Ambient");
                 _engine.Breake();
                 break;
 
@@ -119,10 +143,21 @@ public class EventManager : MonoBehaviour
                 break;
 
             case Style.Fuel:
+
+
+                soundManager.Pause("Music");
+                soundManager.PlayFromStart("MusicIntence");
+                soundManager.Pause("Ambient");
                 _car.Reset();
                 break;
 
             case Style.Generator:
+                soundManager.Play("");
+
+                soundManager.Pause("Music");
+                soundManager.PlayFromStart("MusicIntence");
+                soundManager.Pause("Ambient");
+
                 _triggerControl.BreakAll();
                 break;
 
