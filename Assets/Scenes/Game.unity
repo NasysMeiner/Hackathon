@@ -1932,7 +1932,7 @@ MonoBehaviour:
   _textFullFuel: Full fuel
   _uiManager: {fileID: 1490076169}
   _maxFuel: 100
-  _currentFuel: 0
+  _currentFuel: 100
   _isInteractable: 1
 --- !u!65 &753229948
 BoxCollider:
@@ -2675,7 +2675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxStrength: 100
-  _currentStrength: 0
+  _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
   _uiManager: {fileID: 1490076169}
@@ -3390,6 +3390,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372349059}
   m_CullTransparentMesh: 1
+--- !u!1 &1407003618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407003620}
+  - component: {fileID: 1407003619}
+  m_Layer: 0
+  m_Name: GameLoop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407003619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407003618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92cb7fdde2fd9ba4eb3609e6ba90f7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _robot: {fileID: 1598198658}
+  _holes:
+  - {fileID: 1993455771}
+  - {fileID: 1151968157}
+  - {fileID: 1545010382}
+  - {fileID: 1694563837}
+  _styles: 01000000030000000200000000000000000000000000000000000000000000000000000000000000
+  _engine: {fileID: 692239669}
+  _car: {fileID: 753229947}
+--- !u!4 &1407003620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407003618}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.481934, y: -11.099956, z: 4.687429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490076168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxStrength: 100
-  _currentStrength: 0
+  _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
   _uiManager: {fileID: 1490076169}
@@ -3764,6 +3817,12 @@ MonoBehaviour:
   - Parts:
     - Name: 112
       Text: "\u0430\u043F\u0432\u043F\u043F\u043F"
+  - Parts:
+    - Name: 112
+      Text: 412234243cdfdf
+  - Parts:
+    - Name: 413155
+      Text: dfdhhdhfdfh dfhdhffdh sdff
 --- !u!65 &1598198659
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4017,7 +4076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxStrength: 100
-  _currentStrength: 0
+  _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
   _uiManager: {fileID: 1490076169}
@@ -4767,7 +4826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxStrength: 100
-  _currentStrength: 0
+  _currentStrength: 100
   _speedRepair: 20
   _isInteractable: 1
   _uiManager: {fileID: 1490076169}
@@ -6258,6 +6317,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 536421424}
+  - {fileID: 1407003620}
   - {fileID: 1131659906}
   - {fileID: 677549409}
   - {fileID: 1993455775}

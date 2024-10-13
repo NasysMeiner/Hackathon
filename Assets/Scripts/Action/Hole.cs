@@ -10,12 +10,21 @@ public class Hole : MonoBehaviour, IInteractable
 
     [SerializeField] private UiManager _uiManager;
 
+    private bool _isBreake = false;
+
     bool IInteractable.IsInteractable { get { return _isInteractable; } set { } }
+    public bool IsBreake => _isBreake;
 
     public void Init(float maxStrength, float speedRepair)
     {
         _maxStrength = maxStrength;
         _speedRepair = speedRepair;
+    }
+
+    private void Start()
+    {
+        if(_currentStrength == _maxStrength)
+            _isInteractable = false;
     }
 
     public void ActivateView()
@@ -52,6 +61,9 @@ public class Hole : MonoBehaviour, IInteractable
                 else
                 {
                     _isInteractable = false;
+                    EventManager.Instance.EndEvent();
+                    Debug.Log("Yes!!!");
+                    _isBreake = false;
                     DeActivateView();
                 }
             }
@@ -68,7 +80,7 @@ public class Hole : MonoBehaviour, IInteractable
         _currentStrength = 0;
         _isInteractable = true;
         DeActivateView();
-
+        _isBreake = true;
         //Update model
     }
 }
