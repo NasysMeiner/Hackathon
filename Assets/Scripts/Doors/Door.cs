@@ -69,4 +69,15 @@ public class Door : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+            OpenDoor(1f);
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+            CloseDoor(1f);
+    }
+}
