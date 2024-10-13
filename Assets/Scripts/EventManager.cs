@@ -65,7 +65,19 @@ public class EventManager : MonoBehaviour
 
     public void EndEvent()
     {
-       
+        switch (lastStyle)
+        {
+            case Style.Fuel:
+
+                break;
+            case Style.Generator:
+
+                break;
+            case Style.BlackHole:
+
+                break;
+        }
+        
 
         current_task++;
         tmp_task.text = "Задача: \n" + tasks[current_task];
