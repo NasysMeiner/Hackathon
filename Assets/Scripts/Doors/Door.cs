@@ -14,11 +14,16 @@ public class Door : MonoBehaviour
     Vector3 pos2Down = new Vector3(0, 2.2f, 0);
 
     [SerializeField] GameObject rot;
+    [SerializeField] GameObject cam;
 
     public void Update()
     {
         if (rot != null)
-            rot.transform.Rotate(0, 0.3f, 0);
+        {
+            rot.transform.Rotate(0, 0.1f, 0);
+            var offset = new Vector3(216.5f, cam.transform.position.y, -30.3999996f);
+            cam.transform.position += (offset - cam.transform.position) / 1000;
+        }
     }
 
     public void OpenDoor(float time)
@@ -72,12 +77,18 @@ public class Door : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
+        {
             OpenDoor(1f);
+            transform.parent.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
+        {
             CloseDoor(1f);
+            transform.parent.GetComponent<BoxCollider>().enabled = true;
+        }
     }
 }

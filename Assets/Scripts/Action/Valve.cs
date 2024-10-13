@@ -4,7 +4,7 @@ public class Valve : MonoBehaviour, IInteractable
 {
     [SerializeField] private Color _correctColor;
     [SerializeField] private Color _inCorrectColor;
-    [SerializeField] private MeshRenderer _propts;
+    [SerializeField] private Light _propts;
 
     [SerializeField] private float _speed;
     [SerializeField] private int _correctValue = 50;
@@ -15,20 +15,25 @@ public class Valve : MonoBehaviour, IInteractable
     [SerializeField] private bool _isInteractable = true;
 
     private UiManager _manager;
+    private bool _isRepair = false;
 
     public bool IsInteractable { get { return _isInteractable; } set { } }
+    public bool IsRepair => _isRepair;
 
-    private void Start()
+    public void Repair()
     {
-        _currentValue = Random.Range(0, _maxValue);
-        _correctValue = Random.Range(0, _maxValue);
-
+        _currentValue = _correctValue;
         CheckCorrect();
     }
 
     public void Init(UiManager uiManager)
     {
         _manager = uiManager;
+
+        _currentValue = Random.Range(0, _maxValue);
+        _correctValue = Random.Range(0, _maxValue);
+
+        CheckCorrect();
     }
 
     public void Action()
@@ -69,16 +74,18 @@ public class Valve : MonoBehaviour, IInteractable
     {
         if ((int)_currentValue > _correctValue - _errorValue && (int)_currentValue < _correctValue + _errorValue)
         {
-            _propts.material.color = _correctColor;
+            _propts.color = _correctColor;
+            _isRepair = true;
         }
         else
         {
-            _propts.material.color = _inCorrectColor;
+            _propts.color = _inCorrectColor;
+            _isRepair = false;
         }
     }
 
     private void MoveValve(int direction)
     {
-        transform.Rotate(new Vector3(0, 0, direction * _speed));
+        transform.Rotate(new Vector3(0, direction * _speed, 0));
     }
 }

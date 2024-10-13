@@ -13,7 +13,16 @@ public class Car : MonoBehaviour, IInteractable
 
     [SerializeField] private bool _isInteractable = false;
 
+    private bool _isBreake = false;
+
     public bool IsInteractable { get { return _isInteractable; } set { } }
+    public bool IsBreake => _isBreake;
+
+    private void Start()
+    {
+        if (_currentFuel == _maxFuel)
+            _isInteractable = false;
+    }
 
     public void Action()
     {
@@ -44,7 +53,9 @@ public class Car : MonoBehaviour, IInteractable
                 else if (_currentFuel >= _maxFuel)
                 {
                     DeActivateView();
-                    IsInteractable = false;
+                    _isInteractable = false;
+                    _isBreake = false;
+                    EventManager.Instance.EndEvent();
                     _uiManager.ViewText(_textFullFuel);
                     _currentFuel = _maxFuel;
                 }
@@ -69,5 +80,12 @@ public class Car : MonoBehaviour, IInteractable
         _uiManager.CloseTextInteractable();
         _uiManager.ResetProgressBar();
         _uiManager.CloseFuelText();
+    }
+
+    public void Reset()
+    {
+        _isBreake = true;
+        _currentFuel = 0;
+        _isInteractable = true;
     }
 }

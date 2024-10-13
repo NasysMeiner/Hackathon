@@ -17,6 +17,8 @@ public class PlayerContoller : MonoBehaviour
     public GameObject kanistra, payalnik;
     public Transform itemSpawner;
 
+    [SerializeField] Rigidbody rb;
+
     private void Awake()
     {
         Instance = this;
@@ -28,7 +30,12 @@ public class PlayerContoller : MonoBehaviour
         vertical = Input.GetAxis("Vertical") * Time.deltaTime * speed;
         horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 
-        transform.Translate(new Vector3(horizontal, 0, vertical));
+        //transform.Translate(new Vector3(horizontal, 0, vertical));
+        Vector3 moveDirection = new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 movement = transform.TransformDirection(moveDirection) * speed * Time.deltaTime;
+
+        rb.MovePosition(rb.position + movement);
+
         try
         {
             if (Input.GetKey("1") || Input.GetKey("2"))

@@ -7,17 +7,12 @@ public class DoorManager : MonoBehaviour
 
     [SerializeField] Door[] doors;
 
-    public void Start()
-    {
-        OpenAllDoor();
-        Invoke("CloseAllDoor", 1);
-    }
-
 
     //Открыть дверь по номеру
     public void OpenDoor(Door door)
     {
-        doors[door.num].OpenDoor(0.4f);
+        doors[door.num].OpenDoor(0.2f);
+        doors[door.num].transform.parent.GetComponent<BoxCollider>().enabled = false;
     }
 
     //Открыть все двери
@@ -25,7 +20,8 @@ public class DoorManager : MonoBehaviour
     {
         foreach (Door door in doors)
         {
-            door.OpenDoor(0.4f);
+            door.OpenDoor(0.2f);
+            door.transform.parent.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -34,7 +30,8 @@ public class DoorManager : MonoBehaviour
     {
         foreach (Door door in doors)
         {
-            door.CloseDoor(0.4f);
+            door.CloseDoor(0.2f);
+            door.transform.parent.GetComponent<BoxCollider>().enabled = true;
         }
     }
 
