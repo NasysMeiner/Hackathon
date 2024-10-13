@@ -36,6 +36,18 @@ public class TriggerControl : MonoBehaviour
         _light.color = _correctColor;
     }
 
+    private void Update()
+    {
+        if (!_isWorking)
+        {
+            if (!triggerStates.Contains(0))
+            {
+                if (EventManager.Instance != null)
+                    EventManager.Instance.EndEvent();
+            }
+        }
+    }
+
     //Сломать все переключатели
     public void BreakSome()
     {
