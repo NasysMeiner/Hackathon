@@ -5051,9 +5051,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _styles: 02000000020000000200000000000000000000000000000000000000000000000000000000000000
+  _styles: 03000000020000000200000000000000000000000000000000000000000000000000000000000000
   _engine: {fileID: 1982354536}
-  _car: {fileID: 0}
+  _car: {fileID: 1699595987}
 --- !u!4 &740461969
 Transform:
   m_ObjectHideFlags: 0
@@ -11073,6 +11073,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1699595985}
+  - component: {fileID: 1699595987}
+  - component: {fileID: 1699595986}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Untagged
@@ -11088,13 +11090,53 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699595984}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.529, y: 1.477, z: -28.776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1699595986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699595984}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1699595987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699595984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fadb37bdef4bec4d85ccf9cd3016634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textNoFuel: No fuel
+  _textNoItem: No Item
+  _textFullFuel: Full fuel
+  _uiManager: {fileID: 7384338}
+  _maxFuel: 100
+  _currentFuel: 0
+  _isInteractable: 1
 --- !u!1001 &1701793280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13834,8 +13876,8 @@ SceneRoots:
   - {fileID: 996269994}
   - {fileID: 494283204}
   - {fileID: 1177856192}
-  - {fileID: 1699595985}
   - {fileID: 1982354534}
+  - {fileID: 1699595985}
   - {fileID: 1840477885}
   - {fileID: 14119625}
   - {fileID: 699409813}
