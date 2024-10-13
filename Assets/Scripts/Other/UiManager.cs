@@ -14,6 +14,10 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TMP_Text _textFuel;
     [SerializeField] private TMP_Text _universalText;
     [SerializeField] private GameObject _fuelText;
+    [SerializeField] private GameObject _textPanelObj;
+    [SerializeField] private TMP_Text _textPanel;
+    [SerializeField] private TMP_Text _textName;
+    [SerializeField] private int _timeDialog = 10;
 
     private void Awake()
     {
@@ -104,20 +108,15 @@ public class UiManager : MonoBehaviour
         _textFuel.text = "Топливо в канистре: " + Convert.ToInt32(fuel) + "/100";
     }
 
-    public GameObject textPanel;
-    public Text mainText;
     public void Speak(string name, string text/*, Sprite speaker*/)
     {
-        textPanel.SetActive(true);
-        textPanel.GetComponentInChildren<Text>().text = name;
-        mainText.text = text;
-        //textPanel.GetComponentInChildren<Image>().sprite = speaker;
-        StartCoroutine(TextOut());
+        _textPanelObj.SetActive(true);
+        _textPanel.text = text;
+        _textName.text = name;
     }
 
-    IEnumerator TextOut()
+    public void CloseDialog()
     {
-        yield return new WaitForSeconds(10);
-        textPanel.SetActive(false);
+        _textPanelObj.SetActive(false);
     }
 }
