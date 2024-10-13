@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private Engine _engine;
     [SerializeField] private Car _car;
     [SerializeField] private TriggerControl _triggerControl;
+    [SerializeField] private GameObject mathPanel;
 
     private bool _isDialog = false;
     private bool _isEvent = false;
@@ -84,7 +85,7 @@ public class EventManager : MonoBehaviour
                 break;
 
             case Style.Math:
-                Debug.Log("Net poka");
+                mathPanel.GetComponent<MathPanel>().Activate();
                 EndEvent();
                 break;
 

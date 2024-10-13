@@ -15,7 +15,6 @@ public class Robot : MonoBehaviour, IInteractable
 
     public bool IsInteractable { get { return _isInteractable; } set { } }
     public PartDialog PartDialog => _partDialog;
-
     public void Action()
     {
         if (IsInteractable && _partDialog != null && _currentPartDialog < _parts)

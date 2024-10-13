@@ -16,8 +16,12 @@ public class MathPanel : MonoBehaviour, IInteractable
     [SerializeField] private GameObject player;
     private GameObject mainCum;
     private int result, resInt;
-    public bool isActive = true;
+    bool isActive = false;
 
+    public void Activate()
+    {
+        isActive = true;
+    }
     public void Init(UiManager uiManager)
     {
         _manager = uiManager;
@@ -25,7 +29,7 @@ public class MathPanel : MonoBehaviour, IInteractable
     public bool IsInteractable { get { return _isInteractable; } set { } }
     public void Action()
     {
-        if(!isActive)
+        if(isActive == true)
         {
             _manager.ViewText("ֽאזלט E");
 
@@ -84,6 +88,7 @@ public class MathPanel : MonoBehaviour, IInteractable
 
     public void EndGame()
     {
+        isActive = false;
         cam.gameObject.SetActive(false);
         player.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
