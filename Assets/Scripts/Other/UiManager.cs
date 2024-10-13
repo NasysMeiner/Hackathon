@@ -18,6 +18,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TMP_Text _textPanel;
     [SerializeField] private TMP_Text _textName;
     [SerializeField] private int _timeDialog = 10;
+    [SerializeField] private Image _image;
+    [SerializeField] private Sprite astro_spr;
+    [SerializeField] private Sprite robo_spr;
 
     private void Awake()
     {
@@ -110,6 +113,11 @@ public class UiManager : MonoBehaviour
 
     public void Speak(string name, string text/*, Sprite speaker*/)
     {
+        if (name == "Робот")
+            _image.sprite = robo_spr;
+        else if(name == "Капитан")
+            _image.sprite = astro_spr;
+
         _textPanelObj.SetActive(true);
         _textPanel.text = text;
         _textName.text = name;

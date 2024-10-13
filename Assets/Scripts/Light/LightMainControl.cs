@@ -16,7 +16,7 @@ public class LightMainControl : MonoBehaviour
     }
 
     //Сменить состояние всего света, ключить или выключить
-    void ChangeState(string str)
+    public void ChangeState(string str)
     {
         switch (str)
         {

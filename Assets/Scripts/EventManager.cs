@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
@@ -13,6 +14,14 @@ public class EventManager : MonoBehaviour
     [SerializeField] private Car _car;
     [SerializeField] private TriggerControl _triggerControl;
 
+    [SerializeField] LightMainControl _lctrl;
+    [SerializeField] TextMeshProUGUI tmp_task;
+    [SerializeField] string[] tasks;
+    int current_task = 0;
+
+    [SerializeField] GameObject Mars;
+    [SerializeField] GameObject endPosition;
+
     private bool _isDialog = false;
     private bool _isEvent = false;
     private bool _isEnd = false;
@@ -21,6 +30,9 @@ public class EventManager : MonoBehaviour
 
     private void Start()
     {
+        current_task = 0;
+        tmp_task.text = "Задача: \n" + tasks[current_task];
+
         Instance = this;
         _robot.NextDialog();
         _isDialog = true;
@@ -46,6 +58,10 @@ public class EventManager : MonoBehaviour
 
     public void EndEvent()
     {
+        current_task++;
+        tmp_task.text = "Задача: \n" + tasks[current_task];
+
+        _lctrl.ChangeState("Standard");
         Debug.Log("End!!!");
         _currentHole = null;
         _isEnd = true;
@@ -76,11 +92,16 @@ public class EventManager : MonoBehaviour
 
         _isEvent = true;
 
+        current_task++;
+        tmp_task.text = tasks[current_task];
+
         switch (styl)
         {
+
             case Style.BlackHole:
                 _currentHole = _holes[Random.Range(0, _holes.Count)];
                 _currentHole.Breake();
+                _lctrl.ChangeState("Emergency");
                 break;
 
             case Style.Math:
@@ -120,7 +141,14 @@ public class EventManager : MonoBehaviour
                 Debug.Log(_styles[_currentStyle]);
                 GenerateEvent();
                 break;
-        }     
+        }
+
+        //После конца телепорт марса на близкую дистанцию
+        if (_currentStyle >= _styles.Count)
+        {
+            Mars.transform.position = endPosition.transform.position;
+            Mars.transform.localScale = new Vector3(400, 400, 400);
+        }
     }
 }
 
