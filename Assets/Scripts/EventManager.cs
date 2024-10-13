@@ -156,7 +156,6 @@ public class EventManager : MonoBehaviour
 
             case Style.Fuel:
 
-
                 soundManager.Pause("Music");
                 soundManager.PlayFromStart("MusicIntence");
                 soundManager.Pause("Ambient");

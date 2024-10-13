@@ -52,6 +52,7 @@ public class TriggerControl : MonoBehaviour
     public void BreakSome()
     {
         _isWorking = false;
+        _light.color = _inCorrectColor;
 
         //Случайная поломка генератора
         int y = 0;
@@ -104,6 +105,7 @@ public class TriggerControl : MonoBehaviour
         if (!triggerStates.Contains(0))
         {
             _isWorking = true;
+
             _light.color = _correctColor;
             EventManager.Instance.EndEvent();
 
