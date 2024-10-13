@@ -105,6 +105,10 @@ public class EventManager : MonoBehaviour
                 _triggerControl.BreakAll();
                 break;
 
+            case Style.None:
+                EndEvent();
+                break;
+
             case Style.Random:
                 int randomNumber = Random.Range(0, 4);
 
@@ -133,5 +137,6 @@ public enum Style
     Fuel,
     Pytnshki,
     Generator,
-    Math
+    Math,
+    None
 }
