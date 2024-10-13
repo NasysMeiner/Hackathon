@@ -14,11 +14,7 @@ public class Robot : MonoBehaviour, IInteractable
     private PartDialog _partDialog;
 
     public bool IsInteractable { get { return _isInteractable; } set { } }
-
-    private void Start()
-    {
-        NextDialog();
-    }
+    public PartDialog PartDialog => _partDialog;
 
     public void Action()
     {
@@ -42,6 +38,7 @@ public class Robot : MonoBehaviour, IInteractable
                 _uiManager.CloseDialog();
                 _isInteractable = false;
                 _uiManager.CloseText();
+                _partDialog = null;
             }
         }
         else
@@ -59,6 +56,10 @@ public class Robot : MonoBehaviour, IInteractable
             _partDialog = _dialogs[_currentDialog++];
             _parts = _partDialog.Parts.Count;
             _currentPartDialog = 0;
+        }
+        else
+        {
+            _partDialog = null;
         }
     }
 

@@ -15,20 +15,25 @@ public class Valve : MonoBehaviour, IInteractable
     [SerializeField] private bool _isInteractable = true;
 
     private UiManager _manager;
+    private bool _isRepair = false;
 
     public bool IsInteractable { get { return _isInteractable; } set { } }
+    public bool IsRepair => _isRepair;
 
-    private void Start()
+    public void Repair()
     {
-        _currentValue = Random.Range(0, _maxValue);
-        _correctValue = Random.Range(0, _maxValue);
-
+        _currentValue = _correctValue;
         CheckCorrect();
     }
 
     public void Init(UiManager uiManager)
     {
         _manager = uiManager;
+
+        _currentValue = Random.Range(0, _maxValue);
+        _correctValue = Random.Range(0, _maxValue);
+
+        CheckCorrect();
     }
 
     public void Action()
@@ -70,10 +75,12 @@ public class Valve : MonoBehaviour, IInteractable
         if ((int)_currentValue > _correctValue - _errorValue && (int)_currentValue < _correctValue + _errorValue)
         {
             _propts.material.color = _correctColor;
+            _isRepair = true;
         }
         else
         {
             _propts.material.color = _inCorrectColor;
+            _isRepair = false;
         }
     }
 
