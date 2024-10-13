@@ -12,6 +12,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TMP_Text _textValveInteractable;
     [SerializeField] private TMP_Text _textAttention;
     [SerializeField] private TMP_Text _textFuel;
+    [SerializeField] private TMP_Text _universalText;
+    [SerializeField] private GameObject _fuelText;
 
     private void Awake()
     {
@@ -28,6 +30,28 @@ public class UiManager : MonoBehaviour
         _textInteractable.gameObject.SetActive(false);
         _textInteractable.text = "Press E";
         _textValveInteractable.gameObject.SetActive(false);
+        _fuelText.gameObject.SetActive(false);
+    }
+
+    public void OpenFuelText()
+    {
+        _fuelText.gameObject.SetActive(true);
+    }
+
+    public void CloseFuelText()
+    {
+        _fuelText.gameObject.SetActive(false);
+    }
+
+    public void ViewText(string text)
+    {
+        _universalText.text = text;
+        _universalText.gameObject.SetActive(true);
+    }
+
+    public void CloseText()
+    {
+        _universalText.gameObject.SetActive(false);
     }
 
     public void ViewTextInteractable()

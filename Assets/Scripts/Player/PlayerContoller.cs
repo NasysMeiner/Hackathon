@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+[RequireComponent(typeof(FuelController))]
 public class PlayerContoller : MonoBehaviour
 {
     public static PlayerContoller Instance;
+    public static FuelController FuelController;
     public int hand;
     public float speed; //скорость перса настраивай в инспекторе
     float vertical, horizontal;
@@ -17,6 +20,7 @@ public class PlayerContoller : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        FuelController = GetComponent<FuelController>();
     }
 
     private void Update()
@@ -25,9 +29,15 @@ public class PlayerContoller : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 
         transform.Translate(new Vector3(horizontal, 0, vertical));
-
-        if (Input.GetKey("1") || Input.GetKey("2"))
-            Items(int.Parse(Input.inputString));
+        try
+        {
+            if (Input.GetKey("1") || Input.GetKey("2"))
+                Items(Convert.ToInt32(Input.inputString));
+        }
+        catch (Exception e)
+        {
+            Debug.Log(Input.inputString);
+        }
     }
 
     void Items(int num)
