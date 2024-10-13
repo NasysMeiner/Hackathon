@@ -13,6 +13,7 @@ public class Robot : MonoBehaviour, IInteractable
     private int _parts = 0;
     private PartDialog _partDialog;
 
+    public int Count => _dialogs.Count;
     public bool IsInteractable { get { return _isInteractable; } set { } }
     public PartDialog PartDialog => _partDialog;
 

@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] private Engine _engine;
     [SerializeField] private Car _car;
     [SerializeField] private TriggerControl _triggerControl;
+    [SerializeField] private EndPanel _endPanel;
+    [SerializeField] private CameraRotate cameraRotate;
 
     private bool _isDialog = false;
     private bool _isEvent = false;
@@ -31,6 +33,7 @@ public class EventManager : MonoBehaviour
         if(_isDialog && _robot.PartDialog == null)
         {
             _isDialog = false;
+            _currentStyle++;
             GenerateEvent();
             Debug.Log("Open");
         }
@@ -42,6 +45,14 @@ public class EventManager : MonoBehaviour
             _isEnd = false;
             _isEvent = false;
         }
+
+        if(_currentStyle >= _robot.Count)
+        {
+            cameraRotate.StopRotate();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            _endPanel.gameObject.SetActive(true);
+        }
     }
 
     public void EndEvent()
@@ -49,7 +60,6 @@ public class EventManager : MonoBehaviour
         Debug.Log("End!!!");
         _currentHole = null;
         _isEnd = true;
-        _currentStyle++;
     }
 
     public string CheckError()
@@ -72,7 +82,7 @@ public class EventManager : MonoBehaviour
 
     private void GenerateEvent()
     {
-        Style styl = _styles[_currentStyle];
+        Style styl = _styles[_currentStyle - 1];
 
         _isEvent = true;
 
@@ -113,15 +123,15 @@ public class EventManager : MonoBehaviour
                 int randomNumber = Random.Range(0, 4);
 
                 if(randomNumber == 0)
-                    _styles[_currentStyle] = Style.BlackHole;
+                    _styles[_currentStyle - 1] = Style.BlackHole;
                 else if(randomNumber == 1)
-                    _styles[_currentStyle] = Style.Ventil;
+                    _styles[_currentStyle - 1] = Style.Ventil;
                 else if (randomNumber == 2)
                     _styles[_currentStyle] = Style.Fuel;
                 else if(randomNumber == 3)
-                    _styles[_currentStyle] = Style.Generator;
+                    _styles[_currentStyle - 1] = Style.Generator;
 
-                Debug.Log(_styles[_currentStyle]);
+                Debug.Log(_styles[_currentStyle - 1]);
                 GenerateEvent();
                 break;
         }     
