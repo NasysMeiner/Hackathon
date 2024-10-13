@@ -9,6 +9,7 @@ public class LightMainControl : MonoBehaviour
 
     [SerializeField] Light[] emergency;
     [SerializeField] Light[] st_lights;
+    [SerializeField] Light flashLight;
 
     private void Start()
     {
@@ -25,12 +26,14 @@ public class LightMainControl : MonoBehaviour
                 { light.enabled = true; }
                 foreach (Light light in emergency)
                 { light.enabled = false; }
+                flashLight.enabled = false;
                 break;
             case "Emergency":
                 foreach (Light light in emergency)
                 { light.enabled = true; }
                 foreach (Light light in st_lights)
                 { light.enabled = false; }
+                flashLight.enabled = true;
                 StartCoroutine(FlashLight());
                 break;
             case "Off":
@@ -38,6 +41,7 @@ public class LightMainControl : MonoBehaviour
                 { light.enabled = false; }
                 foreach (Light light in st_lights)
                 { light.enabled = false; }
+                flashLight.enabled = true;
                 break;
         }
     }

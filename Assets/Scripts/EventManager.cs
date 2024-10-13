@@ -164,8 +164,10 @@ public class EventManager : MonoBehaviour
                 break;
 
             case Style.Generator:
+                
+                _lctrl.ChangeState("Off");
+                
                 soundManager.Play("");
-
                 soundManager.Pause("Music");
                 soundManager.PlayFromStart("MusicIntence");
                 soundManager.Pause("Ambient");

@@ -27,13 +27,14 @@ public class Trigger : MonoBehaviour, IInteractable
     {
         if (IsInteractable)
         {
-
             _uiManager.ViewText(_textPress);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _triggerControl.ActivateTrigger(this);
             }
+
+
         }
     }
 
