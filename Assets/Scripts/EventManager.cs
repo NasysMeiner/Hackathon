@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private List<Style> _styles = new List<Style>();
     [SerializeField] private Engine _engine;
     [SerializeField] private Car _car;
+    [SerializeField] private TriggerControl _triggerControl;
 
     private bool _isDialog = false;
     private bool _isEvent = false;
@@ -31,9 +32,11 @@ public class EventManager : MonoBehaviour
         {
             _isDialog = false;
             GenerateEvent();
+            Debug.Log("Open");
         }
         else if(_isEvent && _isEnd)
         {
+            Debug.Log("Exit");
             _robot.NextDialog();
             _isDialog = true;
             _isEnd = false;
@@ -85,7 +88,7 @@ public class EventManager : MonoBehaviour
                 EndEvent();
                 break;
 
-            case Style.Generator:
+            case Style.Ventil:
                 _engine.Breake();
                 break;
 
@@ -98,15 +101,21 @@ public class EventManager : MonoBehaviour
                 _car.Reset();
                 break;
 
+            case Style.Generator:
+                _triggerControl.BreakAll();
+                break;
+
             case Style.Random:
-                int randomNumber = Random.Range(0, 3);
+                int randomNumber = Random.Range(0, 4);
 
                 if(randomNumber == 0)
                     _styles[_currentStyle] = Style.BlackHole;
                 else if(randomNumber == 1)
-                    _styles[_currentStyle] = Style.Generator;
+                    _styles[_currentStyle] = Style.Ventil;
                 else if (randomNumber == 2)
                     _styles[_currentStyle] = Style.Fuel;
+                else if(randomNumber == 3)
+                    _styles[_currentStyle] = Style.Generator;
 
                 Debug.Log(_styles[_currentStyle]);
                 GenerateEvent();
@@ -120,8 +129,9 @@ public enum Style
 {
     Random,
     BlackHole,
-    Generator,
+    Ventil,
     Fuel,
     Pytnshki,
+    Generator,
     Math
 }

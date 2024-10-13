@@ -10,6 +10,18 @@ public class Trigger : MonoBehaviour, IInteractable
     [SerializeField] private UiManager _uiManager;
 
     private string _textPress = "Press E";
+    private TriggerControl _triggerControl;
+
+    public void Init(UiManager uiManager, TriggerControl triggerControl)
+    {
+        _uiManager = uiManager;
+        _triggerControl = triggerControl;
+    }
+
+    public void DisableInteracteble()
+    {
+        _isInteractable = false;
+    }
 
     public void Action()
     {
@@ -18,9 +30,9 @@ public class Trigger : MonoBehaviour, IInteractable
 
             _uiManager.ViewText(_textPress);
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                ;
+                _triggerControl.ActivateTrigger(this);
             }
         }
     }

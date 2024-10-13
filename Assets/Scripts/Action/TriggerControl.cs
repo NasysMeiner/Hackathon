@@ -8,7 +8,10 @@ using UnityEngine.UIElements;
 
 public class TriggerControl : MonoBehaviour
 {
-
+    [SerializeField] private UiManager _uiManager;
+    [SerializeField] private Color _correctColor;
+    [SerializeField] private Color _inCorrectColor;
+    [SerializeField] private Light _light;
     //Список всех триггеров
     [SerializeField] Trigger[] triggers;
 
@@ -16,7 +19,7 @@ public class TriggerControl : MonoBehaviour
     int[] triggerStates;
 
     //Состояние генератора
-    bool _isWorking = true;
+    public bool _isWorking = true;
 
 
     void Start()
@@ -27,11 +30,14 @@ public class TriggerControl : MonoBehaviour
         {
             ActivateTrigger(tr);
             ActivateTrigger(tr);
+            tr.Init(_uiManager, this);
         }
+
+        _light.color = _correctColor;
     }
 
     //Сломать все переключатели
-    void BreakSome()
+    public void BreakSome()
     {
         _isWorking = false;
 
@@ -50,7 +56,7 @@ public class TriggerControl : MonoBehaviour
     }
 
     //Сломать все переключатели
-    void BreakAll()
+    public void BreakAll()
     {
         _isWorking = false;
 
@@ -62,10 +68,12 @@ public class TriggerControl : MonoBehaviour
             triggers[y].transform.GetChild(1).transform.rotation = Quaternion.Euler(rot.x, rot.y, 45);
 
         }
+
+        _light.color = _inCorrectColor;
     }
 
     //Сломать все переключатели
-    void ActivateTrigger(Trigger trigger)
+    public void ActivateTrigger(Trigger trigger)
     {
         var num = Array.IndexOf(triggers, trigger);
         var rot = triggers[num].transform.GetChild(1).transform.rotation;
@@ -84,9 +92,11 @@ public class TriggerControl : MonoBehaviour
         if (!triggerStates.Contains(0))
         {
             _isWorking = true;
+            _light.color = _correctColor;
+            EventManager.Instance.EndEvent();
+
+            foreach(Trigger trig in triggers)
+                trig.DisableInteracteble();
         }
     }
-
-    
-
 }
