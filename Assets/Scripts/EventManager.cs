@@ -44,8 +44,27 @@ public class EventManager : MonoBehaviour
     public void EndEvent()
     {
         Debug.Log("End!!!");
+        _currentHole = null;
         _isEnd = true;
         _currentStyle++;
+    }
+
+    public string CheckError()
+    {
+        if(_currentHole != null)
+        {
+            return "BlackHoll!!!!";
+        }
+        else if (_engine.IsBreake)
+        {
+            return "Generator breake!!!";
+        }
+        else if (_car.IsBreake)
+        {
+            return "Low fuel!!!";
+        }
+
+        return "Norm!";
     }
 
     private void GenerateEvent()
