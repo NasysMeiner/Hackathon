@@ -14530,6 +14530,7 @@ GameObject:
   - component: {fileID: 1047585106}
   - component: {fileID: 1047585105}
   - component: {fileID: 1047585104}
+  - component: {fileID: 1047585111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -14566,8 +14567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: 0
   speed: 5
-  kanistra: {fileID: 946734181340974603, guid: dab89f07ed7c9bb4faf7902fc64834fe, type: 3}
-  payalnik: {fileID: 7113727010767105345, guid: faeb8269ba6613c4faa9da21df8bc763, type: 3}
+  kanistra: {fileID: 7414661151524717201, guid: 122575f0ed5a817488de4c3b945157f0, type: 3}
+  payalnik: {fileID: 9212901394952757286, guid: 72beff3377ea0a049a29681c78bda4fd, type: 3}
   itemSpawner: {fileID: 797657155}
   rb: {fileID: 1047585106}
 --- !u!54 &1047585106
@@ -14688,6 +14689,20 @@ Transform:
   - {fileID: 1767875001}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1047585111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047585103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b9e540069076544bae12408bce4c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  b2p: {fileID: 0}
+  laserMuzzle: {fileID: 0}
 --- !u!1 &1053263270
 GameObject:
   m_ObjectHideFlags: 0

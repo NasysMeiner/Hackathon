@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 
@@ -11,13 +12,13 @@ public class Beam2Point : MonoBehaviour
     [SerializeField] Material[] material;
 
     [SerializeField] float timeToChange;
-    [SerializeField] Transform[] point;
+    [SerializeField] public Transform[] point;
     Vector3[] points;
 
     [SerializeField] LineRenderer lr;
     int r = 0;
 
-    public bool isActive = true;
+    public bool isActive = false;
     private Coroutine coroutine;
 
     private void Start()
@@ -30,12 +31,27 @@ public class Beam2Point : MonoBehaviour
     {
         if (isActive)
         {
-            if(coroutine == null)
+            if (coroutine == null)
+            {
+                point[1].gameObject.SetActive(true);
                 coroutine = StartCoroutine(Animation());
+            }
+        }
+        else
+        {
+            point[1].gameObject.SetActive(false);
+            lr.SetPositions(new Vector3[3]);
+
+            // Останавливаем корутину и сбрасываем её
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;  // Сбросить, чтобы можно было перезапустить
+            }
         }
     }
 
-    //Основаная анимация и смена 
+    // Основная анимация и смена 
     private IEnumerator Animation()
     {
         while (isActive)
@@ -44,6 +60,9 @@ public class Beam2Point : MonoBehaviour
             FindCenter();
             lr.SetPositions(points);
         }
+
+        // Завершение корутины
+        coroutine = null;
     }
 
 
