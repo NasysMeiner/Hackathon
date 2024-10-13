@@ -2821,7 +2821,7 @@ MonoBehaviour:
   - {fileID: 0}
   _styles: 02000000050000000200000000000000000000000000000000000000000000000000000000000000
   _engine: {fileID: 1296633321}
-  _car: {fileID: 0}
+  _car: {fileID: 1469268540}
   _triggerControl: {fileID: 916970481}
 --- !u!4 &494207684
 Transform:
@@ -9386,6 +9386,79 @@ Light:
   m_CorrespondingSourceObject: {fileID: 7957326665587881390, guid: e77abe07658acad448597d6ba7d39873, type: 3}
   m_PrefabInstance: {fileID: 1431019699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1469268539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469268542}
+  - component: {fileID: 1469268540}
+  - component: {fileID: 1469268541}
+  m_Layer: 0
+  m_Name: Fuel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1469268540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469268539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fadb37bdef4bec4d85ccf9cd3016634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textNoFuel: No fuel
+  _textNoItem: No Item
+  _textFullFuel: Full fuel
+  _uiManager: {fileID: 379592943}
+  _maxFuel: 100
+  _currentFuel: 0
+  _isInteractable: 1
+--- !u!65 &1469268541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469268539}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6154289, y: 0.6505184, z: 0.77516747}
+  m_Center: {x: 0.0035419464, y: 0.008333564, z: -0.11241627}
+--- !u!4 &1469268542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469268539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.542, y: 1.5539999, z: -28.718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1489935483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13777,6 +13850,7 @@ SceneRoots:
   - {fileID: 494283204}
   - {fileID: 1177856192}
   - {fileID: 9095428717073675441}
+  - {fileID: 1469268542}
   - {fileID: 1840477885}
   - {fileID: 343640036}
   - {fileID: 551416874}
