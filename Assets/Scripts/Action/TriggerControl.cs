@@ -20,8 +20,8 @@ public class TriggerControl : MonoBehaviour
 
 
     void Start()
-    { 
-        triggers = new Trigger[triggers.Length];
+    {
+        triggerStates = new int[triggers.Length];
         for (int r = 0; r < triggerStates.Length; r++ ) { triggerStates[r] = 0; }
         foreach (var tr in triggers)
         {
